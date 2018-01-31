@@ -1,0 +1,15 @@
+.PostConstructorBody {
+    width: 100%;
+}
+
+.PostConstructorBody textarea {
+    text-indent: 10px;
+    min-width: 100px;
+    border: 1px solid grey;
+    position: relative;
+    top: 15px;
+}
+
+.PostConstructorBody label {
+    font-size: 22px;
+}

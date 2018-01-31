@@ -1,0 +1,13 @@
+.Categories {
+    line-height: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    border: 2px solid rgb(186, 255, 252);
+    color: rgb(186, 255, 252);
+    padding: 0 10px;
+}
+
+.Categories:hover {
+    border: 2px solid rgb(0, 255, 242);
+    color: rgb(0, 255, 242);
+}

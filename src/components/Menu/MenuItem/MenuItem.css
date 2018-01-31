@@ -1,0 +1,9 @@
+.MenuItem {
+    padding: 10px 20px;
+    width: 120px;
+}
+
+.MenuItem:hover {
+    background-color: rgba(0, 128, 0, 0.219);
+    cursor: pointer;
+}

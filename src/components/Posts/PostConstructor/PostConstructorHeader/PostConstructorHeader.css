@@ -1,0 +1,32 @@
+.PostConstructorHeader {
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+}
+
+.PostConstructorHeader input {
+    text-indent: 10px;
+    height: 50px!important;
+    border: 1px solid grey;
+    position: relative;
+    top: 6px;
+}
+
+.PostConstructorHeader input:focus {
+    border: 1px solid grey;
+}
+
+.PostConstructorHeader button {
+    width: 100px;
+    height: 50px;
+    padding: 0 10px;
+    margin: 0 5px 5px 0;
+    align-self: center;
+    border: none;
+}
+
+.PostConstructorHeader button:disabled {
+    border: none;
+    color: grey;
+    cursor: not-allowed;
+}

@@ -1,0 +1,13 @@
+.SearchResultItem{
+ background-color: white;
+ padding: 5px 15px ;
+ width: 250px;
+}
+.SearchResultItem:hover{
+  cursor: pointer;
+  background-color: rgba(51, 167, 51, 0.411);
+}
+.SearchResultItem:last-child{
+    border: 0 0 5px 5px;
+    overflow: hidden;
+}

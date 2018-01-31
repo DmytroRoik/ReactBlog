@@ -1,0 +1,11 @@
+.Category {
+    background-color: transparent;
+    padding: 10px;
+    background-color: rgba(100, 43, 100, 0.311)
+}
+
+.Category:hover {
+    background-color: rgba(6, 43, 31, 0.911);
+    color: white;
+    cursor: pointer;
+}

@@ -1,0 +1,14 @@
+.CategoriesSlider{
+  position: relative;
+  top:0px;
+  left:0px;
+  transition: all .25s ease-in-out;
+}
+.open{
+  display:flex;
+  flex-direction: column;
+  transform: translateX(0px);
+}
+.hidden{
+  transform: translateX(2000px);
+}
