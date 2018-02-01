@@ -1,0 +1,6 @@
+.SocialPanel {
+    padding: 5px 10px;
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+}

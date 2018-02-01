@@ -1,0 +1,19 @@
+.LoggerContainer {
+    width: 300px;
+}
+
+.LoggerButton {
+    width: 200px;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpg8Dm7IGNq7DuTBxuYozNR9rAa9xunvo2NTIjn-JnbWQTzyINOw);
+    background-size: contain;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+    left: 130px;
+}
+
+.LoggerButton:hover {
+    transform: scale(1.2);
+}

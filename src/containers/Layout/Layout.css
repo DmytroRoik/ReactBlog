@@ -1,3 +1,14 @@
-.Layout {
-    padding: 60px 0 0 calc(15% + 100px);
+.Content {
+    padding: 60px 0 0 calc(15% + 150px);
+}
+
+@media(max-width:500px) {
+    .Content {
+        padding: 60px 0 0 0;
+        width: 100%;
+        margin: 0;
+    }
+    .AsideMenu {
+        display: none;
+    }
 }

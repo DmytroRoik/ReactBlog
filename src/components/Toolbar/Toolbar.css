@@ -8,3 +8,10 @@
     background-color: rgba(6, 43, 31, 0.911);
     z-index: 100;
 }
+
+@media(max-width:500px) {
+    .Logo,
+    .Categories {
+        display: none;
+    }
+}

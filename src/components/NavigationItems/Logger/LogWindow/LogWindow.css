@@ -1,0 +1,34 @@
+.LogWindow {
+    min-width: 300px;
+    background-color: rgb(232, 241, 231);
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 0 0 5% 5%;
+    overflow: hidden;
+    z-index: 200;
+}
+
+.avatar {
+    height: 75px;
+    margin-top: 20px;
+    width: 100%;
+    padding: 0 30%;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.close {
+    transform: translateY(-1000px);
+    display: none;
+}
+
+.open {
+    display: flex;
+    transform: translateY(0);
+}

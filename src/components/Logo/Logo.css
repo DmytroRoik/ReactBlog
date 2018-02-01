@@ -1,4 +1,11 @@
-.Logo img{
-  margin-top:-5px;
-  max-height: 50px;
+.Logo img {
+    margin-top: -5px;
+    max-height: 50px;
+    display: inline-block;
+}
+
+@media(max-width:500px) {
+    .Logo img {
+        padding: 0 35%;
+    }
 }

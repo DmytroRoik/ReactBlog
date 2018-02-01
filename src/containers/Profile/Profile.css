@@ -1,0 +1,10 @@
+.Profile {
+    display: flex;
+    justify-content: flex-start;
+}
+
+@media(max-width:500px) {
+    .Profile {
+        flex-direction: column;
+    }
+}

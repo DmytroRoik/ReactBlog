@@ -21,3 +21,9 @@
     font-size: 30px;
     padding: 0;
 }
+
+@media(max-width:500px) {
+    .PostBody img {
+        width: 100%;
+    }
+}

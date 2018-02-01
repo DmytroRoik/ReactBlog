@@ -1,21 +1,33 @@
-.SearchComponent{
-  display:flex;
-  flex-direction: row;
-  min-width:100px;
-  max-width: 250px;
-  max-height: 40px;
-  color:black;
+.SearchComponent {
+    display: flex;
+    flex-direction: row;
+    min-width: 100px;
+    max-width: 250px;
+    max-height: 40px;
+    color: black;
 }
 
-.SearchComponent input{
-  width: 200px;
-  height: 33px!important;
-  padding: 3px 5px!important;
-  background-color: white!important;
+.SearchComponent input {
+    width: 200px;
+    height: 33px!important;
+    padding: 3px 5px!important;
+    background-color: white!important;
 }
-.SearchComponent button:hover{
-  /* background-color:  */
+
+.SearchComponent i {
+    margin-top: 5px;
 }
-.SearchComponent i{
-  margin-top:5px;
+
+@media(max-width:500px) {
+    .SearchComponent {
+        width: 150px;
+        position: relative;
+        left: 40px;
+    }
+}
+
+@media(max-width:400px) {
+    .SearchComponent {
+        display: none;
+    }
 }

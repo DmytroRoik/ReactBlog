@@ -1,0 +1,9 @@
+.Avatar {
+    min-width: 250px;
+    width: 30%;
+}
+
+.Avatar img {
+    width: 100%;
+    margin: 5px;
+}

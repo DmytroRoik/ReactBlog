@@ -1,4 +1,9 @@
 .PostList {
     width: 80%;
-    padding-left: 5%;
+}
+
+@media(max-width:500px) {
+    .PostList {
+        width: 100%;
+    }
 }

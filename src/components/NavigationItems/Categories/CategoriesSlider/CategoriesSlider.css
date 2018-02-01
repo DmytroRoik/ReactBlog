@@ -1,14 +1,22 @@
-.CategoriesSlider{
-  position: relative;
-  top:0px;
-  left:0px;
-  transition: all .25s ease-in-out;
+.CategoriesSlider {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    transition: all .25s ease-in-out;
 }
-.open{
-  display:flex;
-  flex-direction: column;
-  transform: translateX(0px);
+
+.open {
+    display: flex;
+    flex-direction: column;
 }
-.hidden{
-  transform: translateX(2000px);
+
+.hidden {
+    display: none;
+}
+
+@media(max-width:500px) {
+    .hidden {
+        display: flex;
+        flex-direction: column;
+    }
 }

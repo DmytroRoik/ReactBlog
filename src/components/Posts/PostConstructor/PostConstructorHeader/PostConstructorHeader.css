@@ -7,13 +7,13 @@
 .PostConstructorHeader input {
     text-indent: 10px;
     height: 50px!important;
-    border: 1px solid grey;
+    border-bottom: 1px solid grey;
     position: relative;
     top: 6px;
 }
 
 .PostConstructorHeader input:focus {
-    border: 1px solid grey;
+    border-bottom: 1px solid grey;
 }
 
 .PostConstructorHeader button {

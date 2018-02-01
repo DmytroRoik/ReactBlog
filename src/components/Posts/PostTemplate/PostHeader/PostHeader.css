@@ -28,3 +28,13 @@
     height: 40px;
     align-self: center;
 }
+
+@media(max-width:750px) {
+    .PostHeader {
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+    .Category {
+        margin-top: 10px;
+    }
+}

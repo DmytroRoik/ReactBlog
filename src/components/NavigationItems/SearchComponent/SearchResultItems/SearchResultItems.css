@@ -1,6 +1,13 @@
-.SearchResultItems{
-  position: relative;
-  top:5px;
-  left:-22px;
-  width: 200px;
+.SearchResultItems {
+    position: relative;
+    top: 5px;
+    left: -10px;
+    width: 250px;
+}
+
+@media(max-width:500px) {
+    .SearchResultItems {
+        padding: 10px;
+        width: 150px;
+    }
 }
