@@ -1,20 +1,13 @@
 .PostBody {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     padding: 10px 20px;
 }
 
-.PostBody img {
-    max-height: 400px;
-    padding-bottom: 0;
-}
-
 .Content {
     font-size: 14px;
     font-family: "Open Sans", sans-serif;
-}
-p{
-  word-wrap: break-word;
 }
 
 .Title {
@@ -23,10 +16,10 @@ p{
     font-weight: bold;
     font-size: 30px;
     padding: 0;
+    margin-bottom: 10px;
 }
-
-@media(max-width:500px) {
-    .PostBody img {
-        width: 100%;
-    }
+button{
+  background-color: green;
+  color: white;
+  padding: 5px;
 }
