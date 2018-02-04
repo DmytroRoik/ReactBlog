@@ -3,8 +3,9 @@ import classes from './PostBody.css';
 
 const postConstructorBody=(props)=>(
   <div className={classes.PostBody}>
-     <span className={classes.Title} id="title" >{props.title}</span>
+
      <form onSubmit={(e)=>{ props.onSave(e) }} >
+      <input className={classes.Title} id="title" defaultValue={props.title} disabled/>
       <div className="input-field col s12">
         <textarea id="content"  className="materialize-textarea" data-length="500" defaultValue={props.content} required onInput={props.onInputValue}>
 
@@ -17,6 +18,7 @@ const postConstructorBody=(props)=>(
             <label htmlFor="img">Image Url</label>
       </div>
       <button type="submit">Update</button>
+      <button onClick={props.onPressDelete}>Delete</button>
     </form>
   </div>
 );

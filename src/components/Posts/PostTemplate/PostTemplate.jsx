@@ -7,7 +7,6 @@ import ConstructorBody from '../PostEditTemplate/PostBody/PostBody';
 
 const postTemplate=(props)=>(
   <div className={classes.PostTemplate}>
-  {/* bug extract data {title and category} */}
     <Header author={props.author}
             category={props.category}
             editable={props.editable}
@@ -17,7 +16,8 @@ const postTemplate=(props)=>(
        <ConstructorBody
          title={props.title}
          content={props.content}
-         img={props.img}onSave={props.onSave}/>
+         img={props.img}onSave={props.onSave}
+         onPressDelete={props.onDeletePost}/>
      :<Body
        title={props.title}
        content={props.content}

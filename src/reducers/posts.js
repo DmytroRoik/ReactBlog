@@ -12,11 +12,15 @@ const initialState={
 export default function posts(state=initialState,action){
   switch(action.type){
     case "CREATE_POST":{
-      let post={...action.payload}
-      post.editablePost=false;
+      let newPost={...action.payload}
+      newPost.editablePost=false;
+      if(state.posts.some((post)=>post.title===newPost.title)){
+        alert('post duplicate');//change to ajax later
+        return state;
+      }
       return {
         ...state,
-         posts:[...state.posts, post]
+         posts:[...state.posts, newPost]
         }
     }
 
@@ -42,11 +46,12 @@ export default function posts(state=initialState,action){
     case "ENABLE_EDITION_POST":{
        let newPosts=[...state.posts];
        newPosts[0].editablePost=true;
-      // for(let i=0;i<newPosts.length;i++){
-      //   if(newPosts[i].title===action.payload.title)
-      //     newPosts[i].editablePost=true;              //bug
-      // }
-      // console.log(newPosts)
+      for(let i=0;i<newPosts.length;i++){
+        if(newPosts[i].title===action.payload.title)
+          newPosts[i].editablePost=true;
+        else newPosts[i].editablePost=false;
+      }
+      console.log(newPosts)
       return {
         ...state,
          posts:[ ...newPosts]

@@ -11,26 +11,27 @@ class PostList extends Component{
 
     this.selectedPost={}
   }
-  onPostClick=(prop)=>{
-    this.selectedPost.title=prop.title;
-  }
-  onDoubleClickEditActivate=()=>{
+
+  onDoubleClickEditActivate=(e)=>{
+    this.selectedPost=e;
     this.props.enableEditionPostFunction(this.selectedPost);
-    console.log(this.selectedPost)
   }
   onSubmitChanges(e){
     e.preventDefault();
     let form = e.target;
-    let post={
-      title: this.selectedPost.title,
+     this.selectedPost={
+      title: form.title.value,
       content:form.content.value,
       img:form.img.value,
       category:document.getElementById('category').value
     }
-    if(post.content){
+    if(this.selectedPost.content){
       this.setState({editablePost:false})
-      this.props.editPostFunction(post);
+      this.props.editPostFunction(this.selectedPost);
     }
+  }
+  onDeletePostHandler=()=>{
+    this.props.deletePostFunction(this.selectedPost);
   }
   render(){
     return (
@@ -38,15 +39,15 @@ class PostList extends Component{
       {this.props.posts.map((post)=>{
         return <Post
           editable={post.editablePost}
-          key= {post.title+'t'}
+          key= {post.title}
           title={post.title}
           author={post.author}
           content={post.content}
           img={post.img}
           category={post.category}
 
-          clicked={this.onPostClick}
-          onEditActivate={this.onDoubleClickEditActivate}
+          onEditActivate={()=>this.onDoubleClickEditActivate(post)}
+          onDeletePost={this.onDeletePostHandler}
           onSave={this.onSubmitChanges.bind(this)}
         />
       })}
