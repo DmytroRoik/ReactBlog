@@ -1,9 +1,11 @@
 import {combineReducers} from 'redux';
 import posts from './posts';
-//import posts
+import user from './user';
+
 
 const allReducers=combineReducers({
-  posts
+  posts,
+  user
 });
 
 export default allReducers;

@@ -4,7 +4,7 @@ const initialState={
     title: "titleTest",
     content: "123eqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
     img: "http://kb4images.com/images/picture/37509081-picture.jpg",
-    category: "1488",
+    category: "werty",
     editablePost:false
   }]
 }

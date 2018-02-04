@@ -19,10 +19,10 @@ const logWindow=(props)=>
         <BackDrop clicked={props.closeWindow} show={props.show}/>
       </div>
       <div className={attachedClass}>
-          <form>
+          <form onSubmit={props.onUserDataSubmit}>
             <img className={classes.avatar} src="https://imagineacademy.microsoft.com/content/images/microsoft-img.png" alt ="avatarIcon"/>
-            <LoginField icon="account_circle" type="text" id="emailLogin" title="Email or username"/>
-            <LoginField icon="enhanced_encryption" type="password" id="password" title="Password"/>
+            <LoginField icon="account_circle" type="text" id="emailLogin" title="Email or username" onInputData={props.onInputUserData}/>
+            <LoginField icon="enhanced_encryption" type="password" id="password" title="Password" onInputData={props.onInputUserData}/>
             <div className={classes.buttons}>
               <button type="submit">Login</button>
               <button >Register</button>
@@ -33,7 +33,7 @@ const logWindow=(props)=>
           <SocialPanel/>
       </div>
     </Aux>
-    
+
   );
 }
 export default logWindow;

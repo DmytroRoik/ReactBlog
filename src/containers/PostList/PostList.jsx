@@ -64,9 +64,9 @@ const mapDispatchToProps=dispatch=>{
 }
 
 
-function mapStateToProps(store){
+function mapStateToProps(state){
   return {
-    posts: store.posts.posts
+    posts: state.posts.posts
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(PostList);
