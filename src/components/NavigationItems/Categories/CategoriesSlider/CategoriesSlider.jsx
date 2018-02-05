@@ -10,11 +10,16 @@ const  categoriesSlider=(props)=>{
 
   return(
   <div className={attachedClasses}>
-      <Category title="123"/>
-      <Category title="1232"/>
-      <Category title="1233"/>
-      <Category title="1234"/>
-      <Category title="1235"/>
+      {
+        props.categories.map(category=>{
+          return(
+            <Category
+              clicked={props.onclicked}
+              title={category}
+              key={category}/>
+          )
+        })
+      }
   </div>
   );
 }

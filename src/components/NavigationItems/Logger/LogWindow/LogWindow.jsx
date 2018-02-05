@@ -1,8 +1,6 @@
 import React from 'react';
 import classes from './LogWindow.css';
 
-import SocialPanel from '../SocialPanel/SocialPanel';
-import LoginField from '../LoginField/LoginField';
 import BackDrop from '../../../UI/BackDrop/BackDrop';
 import Aux from '../../../../containers/hoc/Aux';
 
@@ -19,18 +17,7 @@ const logWindow=(props)=>
         <BackDrop clicked={props.closeWindow} show={props.show}/>
       </div>
       <div className={attachedClass}>
-          <form onSubmit={props.onUserDataSubmit}>
-            <img className={classes.avatar} src="https://imagineacademy.microsoft.com/content/images/microsoft-img.png" alt ="avatarIcon"/>
-            <LoginField icon="account_circle" type="text" id="emailLogin" title="Email or username" onInputData={props.onInputUserData}/>
-            <LoginField icon="enhanced_encryption" type="password" id="password" title="Password" onInputData={props.onInputUserData}/>
-            <div className={classes.buttons}>
-              <button type="submit">Login</button>
-              <button >Register</button>
-            </div>
-          </form>
-          <hr/>
-          <span>or login with</span>
-          <SocialPanel/>
+          <a href="/" onClick={props.onLogoutClick}>Log out</a>
       </div>
     </Aux>
 

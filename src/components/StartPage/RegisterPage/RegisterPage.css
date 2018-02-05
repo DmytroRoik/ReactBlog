@@ -1,0 +1,50 @@
+.RegisterPage form {
+    width: 300px!important;
+    float: right;
+    margin-right: 50px;
+    background-color: rgba(49, 55, 138, 0.8);
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 10px 10px;
+}
+
+.RegisterPage input {
+    color: white!important;
+    background-color: rgba(128, 128, 128, 0.845)!important;
+    padding-left: 45px!important;
+    position: relative;
+    left: -45px;
+    top: 6px;
+    font-size: 25px!important;
+}
+
+.RegisterPage label {
+    color: rgb(231, 224, 216)!important;
+    font-size: 20px!important;
+}
+
+.RegisterPage i {
+    z-index: 201;
+    margin-top: 10px;
+    color: rgb(202, 188, 169);
+}
+
+.title {
+    color: white;
+    padding: 0 10px;
+}
+
+.RegisterPage button {
+    background-color: rgb(180, 149, 81);
+    padding: 10px;
+}
+
+.footer {
+    padding: 0 20%;
+}
+
+.footer span {
+    color: white;
+    font-size: 25px;
+}
