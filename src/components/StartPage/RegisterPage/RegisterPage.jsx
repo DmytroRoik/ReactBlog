@@ -18,19 +18,19 @@ const registerPage=(props)=>(
       title="username"
       />
       <LoginField
-      icon="account_circle"
+      icon="fingerprint"
       type="password"
       id="registerPasword"
       title="password"
       />
       <LoginField
-      icon="account_circle"
+      icon="person"
       type="text"
       id="registerFirstName"
       title="first name"
       />
       <LoginField
-      icon="account_circle"
+      icon="mode_edit"
       type="text"
       id="registerLastName"
       title="last name"
@@ -41,7 +41,7 @@ const registerPage=(props)=>(
       </div>
 
       <LoginField
-      icon="account_circle"
+      icon="add_a_photo"
       type="text"
       id="registerAvatar"
       title="avatar"

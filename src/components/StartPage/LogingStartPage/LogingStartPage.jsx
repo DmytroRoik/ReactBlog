@@ -16,7 +16,7 @@ const logingStartPage=(props)=>(
         title="login"
         />
       <LoginField
-        icon="account_circle"
+        icon="https"
         type="password"
         id="loginPassword"
         title="password"
