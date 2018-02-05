@@ -16,6 +16,9 @@ class PostList extends Component{
     this.selectedPost=e;
     this.props.enableEditionPostFunction(this.selectedPost);
   }
+  onCancelBtnClickHandler=()=>{
+
+  }
 
   onEditPostHandler(e){
     e.preventDefault();
@@ -27,40 +30,46 @@ class PostList extends Component{
       category:document.getElementById('category').value
     }
 
-    // if(this.selectedPost.content){
-    //   this.setState({editablePost:false});
-    //   let token = sessionStorage.getItem('accessToken');//bug with token
+    if(this.selectedPost.content){
+      this.setState({editablePost:false});
+      const token = sessionStorage.getItem('accessToken');
 
-    //   axios.put('https://koa-neo4j-blog.herokuapp.com/api/post/update',{
-    //     img:      this.selectedPost.img,
-    //     content:  this.selectedPost.content,
-    //     category: this.selectedPost.category,
-    //     token:token
-    //     })
-    //     .then( response =>{
-    //       //bug no constant identificator
-    //       console.log(response)
-          this.props.editPostFunction(this.selectedPost);
-        // })
-        // .catch( error=>{
-        //   console.log(error,token);
-        // });
-   // }
+      axios.put('https://koa-neo4j-blog.herokuapp.com/api/post/update',{
+        title:    this.selectedPost.title,
+        img:      this.selectedPost.img,
+        content:  this.selectedPost.content,
+        category: this.selectedPost.category
+        },
+        {
+          headers: {
+            'Authorization': token,
+        }
+        })
+        .then( response =>{
+          this.props.editPostFunction(response.data);
+        })
+        .catch( error=>{
+          console.log(error);
+        });
+   }
   }
 
   onDeletePostHandler=()=>{
-    let token=sessionStorage.getItem('accessToken');
-    axios.delete('https://koa-neo4j-blog.herokuapp.com/api/post/delete',
-                {title:this.selectedPost.title},
-                {
-                  headers: {
-                    'Content-Type': 'application/json;charset=UTF-8',
-                    "Authorization": token
-                }
-                })
+    const token=sessionStorage.getItem('accessToken');
+
+    axios.post('https://koa-neo4j-blog.herokuapp.com/api/post/delete', {
+        title: this.selectedPost.title
+      },
+      {
+        headers: {
+          'Authorization': token,
+      }
+      })
     .then(response=>{
-      console.log(response);
-      this.props.deletePostFunction(this.selectedPost);//bug
+      this.props.deletePostFunction(this.selectedPost);
+    })
+    .catch(error=>{
+      console.log(error)
     })
 
   }
@@ -71,7 +80,6 @@ class PostList extends Component{
       {this.props.posts.map((post)=>{
         return <Post
         editable={post.editablePost}
-        key= {post.title}
         title={post.title}
         author={post.author}
         content={post.content}

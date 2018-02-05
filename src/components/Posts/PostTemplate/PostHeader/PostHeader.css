@@ -18,18 +18,20 @@
     top: -30px;
     left: 10px;
 }
+
 .Category {
-  width: auto!important;
-  padding: 5px 15px!important;
-  background-color: rgb(82, 82, 230)!important;
-  border-radius: 20px!important;
-  color: white!important;
-  font-size: 20px!important;
-  height: 40px!important;
-  align-self: center!important;
-  box-sizing: border-box!important;
-  text-align: center;
+    width: auto!important;
+    padding: 5px 15px!important;
+    background-color: rgb(82, 82, 230)!important;
+    border-radius: 20px!important;
+    color: white!important;
+    font-size: 20px!important;
+    height: 40px!important;
+    align-self: center!important;
+    box-sizing: border-box!important;
+    text-align: center;
 }
+
 @media(max-width:750px) {
     .PostHeader {
         flex-direction: column;
@@ -37,5 +39,8 @@
     }
     .Category {
         margin-top: 10px;
+        position: relative;
+        left: 70px;
+        top: -50px;
     }
 }

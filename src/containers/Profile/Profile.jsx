@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 class Profile extends Component{
     render(){
-      console.log(this.props.user)
         return (
             <div className={classes.Profile}>
                 <Avatar gender={this.props.user.gender} avatar={this.props.user.img}/>

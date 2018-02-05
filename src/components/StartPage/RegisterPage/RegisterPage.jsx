@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './RegisterPage.css';
-import SocialPanel from '../../NavigationItems/Logger/SocialPanel/SocialPanel';
 import LoginField from '../../NavigationItems/Logger/LoginField/LoginField';
 
 
@@ -47,11 +46,6 @@ const registerPage=(props)=>(
       title="avatar"
       />
       <button type="submit">Sign up</button>
-      <hr/>
-      <div className={classes.footer}>
-      <span>or</span>
-      <SocialPanel/>
-      </div>
   </form>
   </div>
 );

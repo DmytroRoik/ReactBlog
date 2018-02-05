@@ -3,7 +3,6 @@ import classes from './Toolbar.css';
 
 import Logo from '../Logo/Logo';
 import Categories from '../NavigationItems/Categories/Categories';
-import SearchComponent from '../NavigationItems/SearchComponent/SearchComponent';
 import LoggerButton from '../NavigationItems/Logger/LoggerButton';
 import DrawerToggle from '../NavigationItems/SideDrawer/SideDrawerToggle/DrawerToggle';
 
@@ -18,7 +17,6 @@ class Toolbar extends Component{
        <div className={classes.Categories}>
           <Categories/>
         </div>
-        <SearchComponent/>
         <LoggerButton/>
       </header>
     );

@@ -13,20 +13,17 @@ class Categories extends Component{
       isCategoriesOpen:false,
     }
     this.activeCategory="";
-    console.log(0)
   }
 
   mouseOverHandler(){
-   return this.setState({isCategoriesOpen:true});
-  }
-  mouseOutHandler(){
-    return this.setState({isCategoriesOpen:false});
-  }
-  componentWillMount(){
     axios.get("https://koa-neo4j-blog.herokuapp.com/api/category/getall")
     .then((response)=>{
       this.setState({categories:[...response.data]});
     })
+   return this.setState({isCategoriesOpen:true});
+  }
+  mouseOutHandler(){
+    return this.setState({isCategoriesOpen:false});
   }
 
   onCategoryClickHandler=(e)=>{
@@ -34,7 +31,6 @@ class Categories extends Component{
     axios.post("https://koa-neo4j-blog.herokuapp.com/api/category/getallposts",{name:this.activeCategory})
     .then((response)=>{
       this.props.loadPostFunction(response.data);
-
     }).catch(error=>{
       console.log(error);
     })

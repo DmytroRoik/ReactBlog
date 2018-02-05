@@ -1,10 +1,10 @@
 const initialState = {
     posts: [{
-        author: "admin",
-        title: "Hello everybody",
-        content: "Hello everybody",
-        img: "http://kb4images.com/images/picture/37509081-picture.jpg",
-        category: "cursor",
+        author: "",
+        title: "",
+        content: "",
+        img: "",
+        category: "",
         editablePost: false
     }]
 }
@@ -28,8 +28,16 @@ export default function posts(state = initialState, action) {
         case "EDIT_POST":
             {
                 let index = state.posts.indexOf(action.payload);
+
+                for (let i = 0; i < state.posts.length; i++) {
+                    if (state.posts[i].title === action.payload.title) {
+                        index = i;
+                        break;
+                    }
+                }
+                let selectedPost = {...action.payload, editablePost: false }
                 let newPosts = [...state.posts];
-                newPosts.splice(index, 1, action.payload);
+                newPosts.splice(index, 1, {...selectedPost });
                 return {
                     ...state,
                     posts: newPosts
@@ -38,7 +46,12 @@ export default function posts(state = initialState, action) {
 
         case "DELETE_POST":
             {
-                let index = state.posts.indexOf(action.payload);
+                let index = -1;
+                for (let i = 0; i < state.posts.length; i++) {
+                    if (state.posts[i].title === action.payload.title) {
+                        index = i;
+                    }
+                }
                 let newPosts = [...state.posts];
                 newPosts.splice(index, 1);
                 return {
@@ -55,7 +68,6 @@ export default function posts(state = initialState, action) {
                         newPosts[i].editablePost = true;
                     else newPosts[i].editablePost = false;
                 }
-                console.log(newPosts)
                 return {
                     ...state,
                     posts: [...newPosts]
