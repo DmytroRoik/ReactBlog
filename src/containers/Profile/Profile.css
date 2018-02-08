@@ -13,5 +13,7 @@
 @media(max-width:500px) {
     .Profile {
         flex-direction: column;
+        padding: 0;
+        margin: 0;
     }
 }

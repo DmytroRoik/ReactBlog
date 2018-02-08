@@ -7,3 +7,15 @@
     width: 100%;
     margin: 5px;
 }
+
+@media(max-width:500px) {
+    .Avatar {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .Avatar img {
+        width: 100%;
+        margin: -8px -1px;
+    }
+}

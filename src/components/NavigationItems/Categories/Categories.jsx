@@ -10,7 +10,7 @@ class Categories extends Component{
   constructor(props){
     super(props);
     this.state={
-      categories:["test4"],
+      categories:[],
       isCategoriesOpen:false,
     }
     this.activeCategory="";

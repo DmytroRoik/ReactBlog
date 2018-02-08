@@ -11,3 +11,9 @@
 .ProfileInfo p {
     padding-left: 15px;
 }
+
+@media (max-width:500px) {
+    .ProfileInfo p {
+        padding-left: 7px;
+    }
+}

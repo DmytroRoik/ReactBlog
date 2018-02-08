@@ -92,9 +92,11 @@ class PostList extends Component{
           onEditActivate={()=>this.onDoubleClickEditActivate(post)}
           onDeletePost={this.onDeletePostHandler}
           onSave={this.onEditPostHandler.bind(this)}
+          onPress={()=>alert(1)}
         />
       })}
       </div>
+
     );
   }
 }
