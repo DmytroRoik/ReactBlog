@@ -7,7 +7,9 @@ import ConstructorBody from '../PostEditTemplate/PostBody/PostBody';
 
 const postTemplate=(props)=>(
   <div className={classes.PostTemplate}>
-    <Header author={props.author}
+    <Header
+            avatar={props.avatar}
+            author={props.author}
             category={props.category}
             editable={props.editable}
             onClicked={props.onEditActivate}/>

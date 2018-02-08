@@ -13,11 +13,9 @@ class PostList extends Component{
   }
 
   onDoubleClickEditActivate=(e)=>{
+    if(e.author!==this.props.user.firstName+" "+this.props.user.lastName)return;
     this.selectedPost=e;
     this.props.enableEditionPostFunction(this.selectedPost);
-  }
-  onCancelBtnClickHandler=()=>{
-
   }
 
   onEditPostHandler(e){
@@ -74,21 +72,26 @@ class PostList extends Component{
 
   }
 
-  render(){
+
+    render(){
+      if(this.props.posts.length===0)return null;
     return (
       <div className={classes.PostList}>
       {this.props.posts.map((post)=>{
         return <Post
-        editable={post.editablePost}
-        title={post.title}
-        author={post.author}
-        content={post.content}
-        img={post.img}
-        category={post.category}
+          key={post.title}
+          editable={post.editablePost}
+          title={post.title}
+          content={post.content}
+          img={post.img}
 
-        onEditActivate={()=>this.onDoubleClickEditActivate(post)}
-        onDeletePost={this.onDeletePostHandler}
-        onSave={this.onEditPostHandler.bind(this)}
+          category={post.category}
+          author={post.author}
+          avatar={post.avatar}
+
+          onEditActivate={()=>this.onDoubleClickEditActivate(post)}
+          onDeletePost={this.onDeletePostHandler}
+          onSave={this.onEditPostHandler.bind(this)}
         />
       })}
       </div>
@@ -106,7 +109,8 @@ const mapDispatchToProps=dispatch=>{
 
 function mapStateToProps(state){
   return {
-    posts: state.posts.posts
+    posts: state.posts.posts,
+    user: state.user.user
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(PostList);

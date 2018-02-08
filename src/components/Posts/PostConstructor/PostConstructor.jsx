@@ -17,22 +17,24 @@ class PostConstructor extends Component{
   onCreatePostHandler=()=>{
     const token = sessionStorage.getItem('accessToken');
     const post=this.data;
-    post.author=this.props.user.username;
+
+    post.author=this.props.user.firstName+" "+this.props.user.lastName;
+    post.avatar=this.props.user.img;
     let isContentPresent = this.isValuePresent( post.title ) && this.isValuePresent( post.content );
+
     if( isContentPresent && this.isValuePresent( post.category )){
       axios.post('https://koa-neo4j-blog.herokuapp.com/api/post/new',{
-        title: post.title,
-        img: post.img,
-        content: post.content,
-        category: post.category
-      },
-      {
-        headers: {
-            'Authorization': token,
+          title: post.title,
+          img: post.img,
+          content: post.content,
+          category: post.category,
+        },
+        {
+          headers: {
+              'Authorization': token,
         }
     })
       .then(res=>{
-        console.log(res)
         this.props.createPostFunction(this.data);
       })
 

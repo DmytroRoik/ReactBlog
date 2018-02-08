@@ -18,8 +18,8 @@ export default function user(state = initialState, action) {
         case "LOGIN_USER":
             {
                 axios.post('https://koa-neo4j-blog.herokuapp.com/api/user/signin', {
-                    username: "roichenko",
-                    password: "14881488"
+                    username: action.payload.username,
+                    password: action.payload.password
                 })
                 .then((response) => sessionStorage.setItem('accessToken', response.data.data));
                 return {

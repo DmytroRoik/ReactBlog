@@ -1,12 +1,5 @@
 const initialState = {
-    posts: [{
-        author: "",
-        title: "",
-        content: "",
-        img: "",
-        category: "",
-        editablePost: false
-    }]
+    posts: []
 }
 
 export default function posts(state = initialState, action) {

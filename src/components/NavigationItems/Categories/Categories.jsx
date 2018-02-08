@@ -4,12 +4,13 @@ import CategoriesSlider from './CategoriesSlider/CategoriesSlider';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import {loadPostAction} from '../../../actions/actionPost';
+import {withRouter }from 'react-router-dom';
 
 class Categories extends Component{
   constructor(props){
     super(props);
     this.state={
-      categories:["test4","test2","test3","test1"],
+      categories:["test4"],
       isCategoriesOpen:false,
     }
     this.activeCategory="";
@@ -30,7 +31,25 @@ class Categories extends Component{
     this.activeCategory=e.target.textContent;
     axios.post("https://koa-neo4j-blog.herokuapp.com/api/category/getallposts",{name:this.activeCategory})
     .then((response)=>{
-      this.props.loadPostFunction(response.data);
+      let result=response.data;
+      this.props.loadPostFunction([]);
+      if(this.props.location.pathname==="/"){
+        result=result.filter((post)=>post.author===this.props.user.username);
+      }
+      let fullPosts=[];
+      result.forEach (post=>{
+        axios.post('https://koa-neo4j-blog.herokuapp.com/api/user/getuser',{username: post.author})
+          .then(res=>{
+            let item={...post}
+            item.author = res.data[0]["_fields"][0].properties.firstName + " " +res.data[0]["_fields"][0].properties.lastName;
+            item.avatar = res.data[0]["_fields"][0].properties.img;
+
+            fullPosts.push(item)///fix later
+            this.props.loadPostFunction(fullPosts);
+          })
+      })
+
+
     }).catch(error=>{
       console.log(error);
     })
@@ -57,4 +76,9 @@ const mapDispatchToProps=dispatch=>{
     loadPostFunction:(posts)=>dispatch(loadPostAction(posts))
   }
 }
-export default connect(null,mapDispatchToProps)(Categories);
+const mapStateToProps=state=>{
+  return{
+    user:state.user.user
+  }
+}
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Categories));

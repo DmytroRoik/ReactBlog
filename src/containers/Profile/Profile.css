@@ -1,6 +1,13 @@
 .Profile {
     display: flex;
     justify-content: flex-start;
+    padding: 2% 2%;
+}
+
+.UserPosts {
+    display: flex;
+    flex-direction: column;
+    padding: 0 5%;
 }
 
 @media(max-width:500px) {

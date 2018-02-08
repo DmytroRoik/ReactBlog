@@ -6,7 +6,7 @@ const profileInfo=(props)=>{
         <div className={classes.ProfileInfo}>
             <span>{props.user.firstName||"username"}</span>
             <span>{props.user.lastName}</span>
-            <p>{ props.user.gender||""}</p>
+            <p>gender: { props.user.gender||""}</p>
         </div>
     );
 }

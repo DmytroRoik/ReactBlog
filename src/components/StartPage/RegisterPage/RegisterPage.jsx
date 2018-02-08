@@ -43,7 +43,7 @@ const registerPage=(props)=>(
       icon="add_a_photo"
       type="text"
       id="registerAvatar"
-      title="avatar"
+      title="avatar URL"
       />
       <button type="submit">Sign up</button>
   </form>
