@@ -4,8 +4,7 @@ import classes from './PostConstructor.css';
 import PostHeader from './PostConstructorHeader/PostConstructorHeader';
 import PostBody from './PostConstructorBody/PostConstructorBody';
 import { connect } from 'react-redux';
-import { createPostAction } from '../../../actions//actionPost';
-import axios from 'axios';
+import { fetchCreatePost } from '../../../actions//actionPost';
 
 class PostConstructor extends Component{
 
@@ -23,21 +22,7 @@ class PostConstructor extends Component{
     let isContentPresent = this.isValuePresent( post.title ) && this.isValuePresent( post.content );
 
     if( isContentPresent && this.isValuePresent( post.category )){
-      axios.post('https://koa-neo4j-blog.herokuapp.com/api/post/new',{
-          title: post.title,
-          img: post.img,
-          content: post.content,
-          category: post.category,
-        },
-        {
-          headers: {
-              'Authorization': token,
-        }
-    })
-      .then(res=>{
-        this.props.createPostFunction(this.data);
-      })
-
+      this.props.onfetchCreatePost(post, token);
     }
     else{
       alert("Must be:\n - Title\n - Body");
@@ -63,7 +48,7 @@ class PostConstructor extends Component{
 }
 const mapDispatchToProps=dispatch=>{
   return {
-    createPostFunction: (post)=>dispatch(createPostAction(post))
+    onfetchCreatePost: (post, token)=>dispatch(fetchCreatePost(post, token))
   }
 }
 const mapStateToProp=state=>{

@@ -1,59 +1,39 @@
 import React,{Component} from 'react';
 import classes from './Categories.css';
 import CategoriesSlider from './CategoriesSlider/CategoriesSlider';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import {loadPostAction} from '../../../actions/actionPost';
+import { fetchCategories } from '../../../actions/actionCategory';
+import {loadPostAction, fetchAllPostsByCategory } from '../../../actions/actionPost';
 import {withRouter }from 'react-router-dom';
 
 class Categories extends Component{
   constructor(props){
     super(props);
     this.state={
-      categories:[],
       isCategoriesOpen:false,
     }
     this.activeCategory="";
   }
 
   mouseOverHandler(){
-    axios.get("https://koa-neo4j-blog.herokuapp.com/api/category/getall")
-    .then((response)=>{
-      this.setState({categories:[...response.data]});
-    })
-   return this.setState({isCategoriesOpen:true});
+    this.props.onFetchCategories();
+    this.setState({isCategoriesOpen:true});
   }
   mouseOutHandler(){
-    return this.setState({isCategoriesOpen:false});
+    this.setState({isCategoriesOpen:false});
   }
 
   onCategoryClickHandler=(e)=>{
     this.activeCategory=e.target.textContent;
-    axios.post("https://koa-neo4j-blog.herokuapp.com/api/category/getallposts",{name:this.activeCategory})
-    .then((response)=>{
-      let result=response.data;
-      this.props.loadPostFunction([]);
-      if(this.props.location.pathname==="/"){
-        result=result.filter((post)=>post.author===this.props.user.username);
-      }
-      let fullPosts=[];
-      result.forEach (post=>{
-        axios.post('https://koa-neo4j-blog.herokuapp.com/api/user/getuser',{username: post.author})
-          .then(res=>{
-            let item={...post}
-            item.author = res.data[0]["_fields"][0].properties.firstName + " " +res.data[0]["_fields"][0].properties.lastName;
-            item.avatar = res.data[0]["_fields"][0].properties.img;
-
-            fullPosts.push(item)///fix later
-            this.props.loadPostFunction(fullPosts);
-          })
-      })
-
-
-    }).catch(error=>{
-      console.log(error);
-    })
+    if(this.props.location.pathname==="/"){
+      this.props.onfetchAllPostsByCategory(this.activeCategory,this.props.user.username);
+    }
+    else{
+      this.props.onfetchAllPostsByCategory(this.activeCategory);
+    }
+    this.setState({isCategoriesOpen:false});
   }
+
   render(){
     return(
       <div
@@ -63,7 +43,7 @@ class Categories extends Component{
            Categories
         </div>
           <CategoriesSlider
-            categories={this.state.categories}
+            categories={this.props.categories}
             onclicked={this.onCategoryClickHandler}
             show={this.state.isCategoriesOpen}
             />
@@ -73,12 +53,15 @@ class Categories extends Component{
 }
 const mapDispatchToProps=dispatch=>{
   return{
-    loadPostFunction:(posts)=>dispatch(loadPostAction(posts))
+    loadPostFunction:(posts)=>dispatch(loadPostAction(posts)),
+    onFetchCategories: () => dispatch(fetchCategories()),
+    onfetchAllPostsByCategory: (activeCategory, username) => dispatch(fetchAllPostsByCategory(activeCategory,username))
   }
 }
 const mapStateToProps=state=>{
   return{
-    user:state.user.user
+    user:state.user.user,
+    categories: state.categories.categories
   }
 }
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Categories));

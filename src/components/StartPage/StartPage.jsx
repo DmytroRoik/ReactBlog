@@ -2,16 +2,13 @@ import React,{Component} from 'react';
 import classes from './StartPage.css';
 import RegisterPage from './RegisterPage/RegisterPage';
 import LogingStartPage from './LogingStartPage/LogingStartPage';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import {loginUserAction,registerUserAction} from '../../actions/actionUser';
+import { fetchLoginUser, fetchRegisterUser} from '../../actions/actionUser';
 
 class StartPage extends Component{
   constructor(props){
     super(props);
-    this.state={
-      isPageShow:true
-    }
+
     this.userValue={ }
     this.gender="male";
   }
@@ -31,14 +28,7 @@ class StartPage extends Component{
         username: $form.loginUsername.value,
         password: $form.loginPassword.value
       }
-      axios.post('https://koa-neo4j-blog.herokuapp.com/api/user/signin',this.userValue)
-        .then(response=>{
-            let token=response.data.data;
-            sessionStorage.setItem('accessToken',token);
-            this.props.loginUserFunction({...response.data.user});
-            this.setState({isPageShow:false});
-        })
-        .catch(error=>console.log(error));
+      this.props.onfetchLoginUser(this.userValue);
     }
     else if($form.id==="registerForm"){
       this.userValue={
@@ -49,16 +39,7 @@ class StartPage extends Component{
         img: $form.registerAvatar.value,
         gender: this.gender
       }
-      axios.post('https://koa-neo4j-blog.herokuapp.com/api/user/signup',this.userValue)
-      .then(response=>{
-        axios.post('https://koa-neo4j-blog.herokuapp.com/api/user/signin',this.userValue)
-        .then(res=>{
-          let token=response.data.data;
-            sessionStorage.setItem('accessToken',token);
-          this.props.registerUserFunction(this.userValue);
-          this.setState({isPageShow:false})
-        })
-      });
+      this.props.onfetchRegisterUser(this.userValue);
     }
     $form.reset();
   }
@@ -77,8 +58,8 @@ class StartPage extends Component{
 }
 const mapDispatchToProp=dispatch=>{
   return {
-    loginUserFunction: (user)=>dispatch(loginUserAction(user)),
-    registerUserFunction: (user)=>dispatch(registerUserAction(user))
+    onfetchLoginUser: (user)=>dispatch(fetchLoginUser(user)),
+    onfetchRegisterUser: (user)=>dispatch(fetchRegisterUser(user))
   }
 }
 const mapStateToProp=state=>{

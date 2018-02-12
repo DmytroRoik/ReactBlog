@@ -2,9 +2,8 @@ import React,{Component} from 'react';
 import classes from './PostList.css';
 
 import Post from '../../components/Posts/PostTemplate/PostTemplate';
-import {connect} from 'react-redux';
-import {editPostAction,deletePostAction,enableEditionPostAction} from '../../actions/actionPost'
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { fetchUpdatePost, fetchDeletePost, enableEditionPostAction } from '../../actions/actionPost';
 
 class PostList extends Component{
   constructor(props){
@@ -31,50 +30,19 @@ class PostList extends Component{
     if(this.selectedPost.content){
       this.setState({editablePost:false});
       const token = sessionStorage.getItem('accessToken');
-
-      axios.put('https://koa-neo4j-blog.herokuapp.com/api/post/update',{
-        title:    this.selectedPost.title,
-        img:      this.selectedPost.img,
-        content:  this.selectedPost.content,
-        category: this.selectedPost.category
-        },
-        {
-          headers: {
-            'Authorization': token,
-        }
-        })
-        .then( response =>{
-          this.props.editPostFunction(response.data);
-        })
-        .catch( error=>{
-          console.log(error);
-        });
+      this.props.onfetchUpdatePost(this.selectedPost, token);
    }
   }
 
   onDeletePostHandler=()=>{
     const token=sessionStorage.getItem('accessToken');
-
-    axios.post('https://koa-neo4j-blog.herokuapp.com/api/post/delete', {
-        title: this.selectedPost.title
-      },
-      {
-        headers: {
-          'Authorization': token,
-      }
-      })
-    .then(response=>{
-      this.props.deletePostFunction(this.selectedPost);
-    })
-    .catch(error=>{
-      console.log(error)
-    })
-
+    this.props.onfetchDeletePost(this.selectedPost, token);
   }
 
 
     render(){
       if(this.props.posts.length===0)return null;
+
     return (
       <div className={classes.PostList}>
       {this.props.posts.map((post)=>{
@@ -102,9 +70,9 @@ class PostList extends Component{
 }
 const mapDispatchToProps=dispatch=>{
   return {
-    editPostFunction: (post)=>dispatch(editPostAction(post)),
-    deletePostFunction: (post)=>dispatch(deletePostAction(post)),
-    enableEditionPostFunction: (post)=>dispatch( enableEditionPostAction(post))
+    onfetchUpdatePost: (post, token) => dispatch( fetchUpdatePost(post, token)),
+    onfetchDeletePost: (post, token) => dispatch( fetchDeletePost(post, token)),
+    enableEditionPostFunction: (post)=> dispatch( enableEditionPostAction(post))
   }
 }
 
