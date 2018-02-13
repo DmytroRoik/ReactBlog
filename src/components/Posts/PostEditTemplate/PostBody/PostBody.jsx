@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './PostBody.css';
 
+import ImagePreview from '../../../../containers/ImagePreview/ImagePreview';
 const postConstructorBody=(props)=>(
   <div className={classes.PostBody}>
 
@@ -12,11 +13,11 @@ const postConstructorBody=(props)=>(
         </textarea>
         <label htmlFor="content">Post body...</label>
       </div>
-
-      <div className="input-field col s6">
+      <ImagePreview/>
+      {/* <div className="input-field col s6">
             <input id="img" type="text" className="validate" defaultValue={props.img} onInput={props.onInputValue}/>
             <label htmlFor="img">Image Url</label>
-      </div>
+      </div> */}
       <button type="submit">Update</button>
       <button onClick={props.onPressDelete}>Delete</button>
     </form>

@@ -1,7 +1,8 @@
 import React from 'react';
 import classes from './RegisterPage.css';
-import LoginField from '../../NavigationItems/Logger/LoginField/LoginField';
+import LoginField from '../..//UI/InputField/InputField';
 
+import ImagePreview from '../../../containers/ImagePreview/ImagePreview';
 
 const registerPage=(props)=>(
   <div className={classes.RegisterPage}>
@@ -39,12 +40,13 @@ const registerPage=(props)=>(
         <button onClick={props.chooseGender} id="genderFemaleBtn">Female</button>
       </div>
 
-      <LoginField
+      {/* <LoginField
       icon="add_a_photo"
       type="text"
       id="registerAvatar"
       title="avatar URL"
-      />
+      /> */}
+      <ImagePreview/>
       <button type="submit">Sign up</button>
   </form>
   </div>

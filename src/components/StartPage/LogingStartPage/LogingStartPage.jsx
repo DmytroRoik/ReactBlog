@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from '../RegisterPage/RegisterPage.css';
-import LoginField from '../../NavigationItems/Logger/LoginField/LoginField';
+import LoginField from '../../UI/InputField/InputField';
 
 const logingStartPage=(props)=>(
   <div className={classes.RegisterPage}>

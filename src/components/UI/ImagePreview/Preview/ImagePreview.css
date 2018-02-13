@@ -1,0 +1,9 @@
+.Preview{
+  position: relative;
+  top:-10px;
+margin-bottom: 0;
+pointer-events: none;
+}
+.Preview img{
+  width: 100%;
+}
