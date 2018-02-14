@@ -1,0 +1,11 @@
+.ControlButton{
+  background-color: grey;
+  width:100px;
+}
+.ControlButton button{
+  width: 100%;
+  padding: 5px;
+  color: white;
+  font-size: 20px;
+  border-radius: 6px;
+}

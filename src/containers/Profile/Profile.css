@@ -9,6 +9,9 @@
     flex-direction: column;
     padding: 0 5%;
 }
+.errorInput{
+  border: 2px dashed red!important;
+}
 
 @media(max-width:500px) {
     .Profile {

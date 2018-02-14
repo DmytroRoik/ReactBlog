@@ -1,0 +1,14 @@
+.ControlPanel{
+  width:200px;
+  display: flex;
+  padding: 5px;
+  margin-left: 40px;
+}
+
+.editBtn{
+  background-color: blue;
+}
+.deleteBtn{
+  background-color: red;
+}
+

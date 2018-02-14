@@ -12,13 +12,11 @@ class SearchComponent extends Component{
         "asdfssdfasfweff"
       ],
       isOpen:false
-    }  
+    }
   }
 
   onSearchInputHandler(e){
-    //todo:send ajax
-    //e.target.value
-    if(e.target.value===""||e.target.value.length==0){
+    if(e.target.value===""||e.target.value.length===0){
       this.setState({isOpen:false});
       this.setState({searchResults:[]});
     }else{
@@ -26,7 +24,7 @@ class SearchComponent extends Component{
       this.setState({SearchResults:[e.target.value]});
     }
   }
-  
+
   render(){
     return (
       <div>
@@ -36,7 +34,7 @@ class SearchComponent extends Component{
         </div>
           { !this.state.isOpen
             ?null
-            :<SearchResultItems searchResult={this.state.SearchResults}/>} 
+            :<SearchResultItems searchResult={this.state.SearchResults}/>}
         </div>
     );
   }

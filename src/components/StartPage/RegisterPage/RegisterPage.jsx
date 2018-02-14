@@ -39,13 +39,6 @@ const registerPage=(props)=>(
         <button onClick={props.chooseGender} id="genderMaleBtn">Male</button>
         <button onClick={props.chooseGender} id="genderFemaleBtn">Female</button>
       </div>
-
-      {/* <LoginField
-      icon="add_a_photo"
-      type="text"
-      id="registerAvatar"
-      title="avatar URL"
-      /> */}
       <ImagePreview/>
       <button type="submit">Sign up</button>
   </form>
