@@ -31,12 +31,13 @@ class StartPage extends Component{
       this.props.onfetchLoginUser(this.userValue);
     }
     else if($form.id==="registerForm"){
+      const image = $form.querySelector(".ImagePreview img").src;
       this.userValue={
         username: $form.registerUsername.value,
         password: $form.registerPasword.value,
         firstName: $form.registerFirstName.value,
         lastName: $form.registerLastName.value,
-        img: $form.registerAvatar.value,
+        img: image,
         gender: this.gender
       }
       this.props.onfetchRegisterUser(this.userValue);

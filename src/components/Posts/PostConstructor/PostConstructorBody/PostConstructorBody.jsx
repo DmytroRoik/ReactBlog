@@ -16,10 +16,6 @@ const postConstructorBody=(props)=>(
           <label htmlFor="category">Category</label>
     </div>
   <ImagePreview/>
-    {/* <div className="input-field col s6">
-          <input id="img" type="text" className="validate" onInput={props.onInputValue}/>
-          <label htmlFor="img">Image Url</label>
-    </div> */}
   </div>
 );
 export default postConstructorBody;

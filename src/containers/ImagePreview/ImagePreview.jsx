@@ -12,7 +12,6 @@ class ImagePreview extends Component{
       encodedPicture:"",
       isCanDrop:false
     }
-
   }
 
   onDropPictureHandler = e =>{
@@ -40,10 +39,9 @@ class ImagePreview extends Component{
   }
 
   render(){
-    let $inputField=(<InputField icon="add_a_photo" type="file" id="UserPicture" title="" onChange={this.onInputFieldClickHandler}/>)
+
     let $preview=(<Preview img={this.state.encodedPicture}/>)
     if(this.state.encodedPicture.length===0){
-      //$inputField=null;
       $preview=null;
     }
 
@@ -53,12 +51,9 @@ class ImagePreview extends Component{
              ondrag={this.onDragHandler}
              onDragLeave={this.onDragLeaveHandler}
               >
-            {$inputField}
+            <InputField icon="add_a_photo" type="file" id="UserPicture" title="" onChange={this.onInputFieldClickHandler}/>
             {$preview}
           </DropBox>
-
-
-
       </div>
     );
   }

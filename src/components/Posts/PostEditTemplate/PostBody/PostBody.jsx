@@ -14,10 +14,6 @@ const postConstructorBody=(props)=>(
         <label htmlFor="content">Post body...</label>
       </div>
       <ImagePreview/>
-      {/* <div className="input-field col s6">
-            <input id="img" type="text" className="validate" defaultValue={props.img} onInput={props.onInputValue}/>
-            <label htmlFor="img">Image Url</label>
-      </div> */}
       <button type="submit">Update</button>
       <button onClick={props.onPressDelete}>Delete</button>
     </form>

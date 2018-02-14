@@ -19,11 +19,12 @@ class PostList extends Component{
 
   onEditPostHandler(e){
     e.preventDefault();
-    let form = e.target;
+    let $form = e.target;
+    const image = $form.querySelector(".ImagePreview img").src;
     this.selectedPost={
-      title: form.title.value,
-      content:form.content.value,
-      img:form.img.value,
+      title: $form.title.value,
+      content:$form.content.value,
+      img:image,
       category:document.getElementById('category').value
     }
 
@@ -38,7 +39,6 @@ class PostList extends Component{
     const token=sessionStorage.getItem('accessToken');
     this.props.onfetchDeletePost(this.selectedPost, token);
   }
-
 
     render(){
       if(this.props.posts.length===0)return null;
