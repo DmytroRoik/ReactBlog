@@ -4,6 +4,7 @@ import classes from './PostList.css';
 import Post from '../../components/Posts/PostTemplate/PostTemplate';
 import { connect } from 'react-redux';
 import { fetchUpdatePost, fetchDeletePost, enableEditionPostAction } from '../../actions/actionPost';
+import { fetchAllPost } from '../../actions/actionPost';
 
 class PostList extends Component{
   constructor(props){
@@ -42,7 +43,6 @@ class PostList extends Component{
 
     render(){
       if(this.props.posts.length===0)return null;
-
     return (
       <div className={classes.PostList}>
       {this.props.posts.map((post)=>{
@@ -66,12 +66,21 @@ class PostList extends Component{
 
     );
   }
+  componentDidMount(){
+    if(!this.props.location)return;
+
+    if(this.props.location.pathname==="/posts"){
+      this.props.onfetchAllPost();
+    }
+  }
+
 }
 const mapDispatchToProps=dispatch=>{
   return {
     onfetchUpdatePost: (post, token) => dispatch( fetchUpdatePost(post, token)),
     onfetchDeletePost: (post, token) => dispatch( fetchDeletePost(post, token)),
-    enableEditionPostFunction: (post)=> dispatch( enableEditionPostAction(post))
+    enableEditionPostFunction: (post)=> dispatch( enableEditionPostAction(post)),
+    onfetchAllPost: () => dispatch( fetchAllPost())
   }
 }
 

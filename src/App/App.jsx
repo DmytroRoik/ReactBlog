@@ -15,7 +15,7 @@ class App extends Component {
         <Layout>
             <Route path="/" exact component={StartPage}/>
           <Switch>
-            <Route path="/" exact component={Profile}/>
+            <Route path="/profile" exact component={Profile}/>
             <Route path="/myposts" exact component={PostList}/>
             <Route path="/new-post" exact component={PostConstructor}  />
             <Route path="/posts" exact component={PostList}  />

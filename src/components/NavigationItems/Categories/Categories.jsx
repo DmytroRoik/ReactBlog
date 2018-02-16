@@ -3,7 +3,7 @@ import classes from './Categories.css';
 import CategoriesSlider from './CategoriesSlider/CategoriesSlider';
 import { connect } from 'react-redux';
 import { fetchCategories } from '../../../actions/actionCategory';
-import {loadPostAction, fetchAllPostsByCategory } from '../../../actions/actionPost';
+import { fetchAllPostsByCategory } from '../../../actions/actionPost';
 import {withRouter }from 'react-router-dom';
 
 class Categories extends Component{
@@ -16,7 +16,7 @@ class Categories extends Component{
   }
 
   mouseOverHandler(){
-    this.props.onFetchCategories();
+   // this.props.onFetchCategories();
     this.setState({isCategoriesOpen:true});
   }
   mouseOutHandler(){
@@ -25,7 +25,7 @@ class Categories extends Component{
 
   onCategoryClickHandler=(e)=>{
     this.activeCategory=e.target.textContent;
-    if(this.props.location.pathname==="/"){
+    if(this.props.location.pathname==="/home"){
       this.props.onfetchAllPostsByCategory(this.activeCategory,this.props.user.username);
     }
     else{
@@ -50,10 +50,12 @@ class Categories extends Component{
       </div>
     );
   }
+  componentWillMount(){
+    this.props.onFetchCategories();
+  }
 }
 const mapDispatchToProps=dispatch=>{
   return{
-    loadPostFunction:(posts)=>dispatch(loadPostAction(posts)),
     onFetchCategories: () => dispatch(fetchCategories()),
     onfetchAllPostsByCategory: (activeCategory, username) => dispatch(fetchAllPostsByCategory(activeCategory,username))
   }

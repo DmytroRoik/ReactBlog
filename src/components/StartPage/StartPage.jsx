@@ -8,7 +8,6 @@ import { fetchLoginUser, fetchRegisterUser} from '../../actions/actionUser';
 class StartPage extends Component{
   constructor(props){
     super(props);
-
     this.userValue={ }
     this.gender="male";
   }
@@ -46,7 +45,12 @@ class StartPage extends Component{
   }
   render(){
     let attachedClasses=[classes.StartPage];
-    if(this.props.isUserPresent)attachedClasses.push(classes.Close);
+    if(this.props.isUserPresent){
+      attachedClasses.push(classes.Close);
+      setTimeout(()=>{
+      this.props.history.push('/profile');
+      },300);
+    }
     return (
       <div className={attachedClasses.join(' ')}>
       <LogingStartPage submited={this.onSubmitedValueHandler}/>

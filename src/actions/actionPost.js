@@ -54,6 +54,23 @@ const addAuthorInfoToPost = (dispatch, posts) =>{
   });
 }
 
+const addMyInfoToPost = (dispatch, posts) =>{
+  const fullPosts=[...posts];
+
+  let user={};
+  axios.post('https://koa-neo4j-blog.herokuapp.com/api/user/getuser',{username: posts[0].author})
+  .then(res=>{
+      user.author = res.data[0]["_fields"][0].properties.firstName + " " +res.data[0]["_fields"][0].properties.lastName;
+      user.avatar = res.data[0]["_fields"][0].properties.img;
+
+      fullPosts.forEach (post=>{
+        post.author=user.author;
+        post.avatar=user.avatar;
+      });
+      dispatch(loadPostAction(fullPosts));
+  })
+}
+
 
 export const fetchAllPost = (username) =>{
   return dispatch =>{
@@ -71,7 +88,7 @@ export const fetchAllPostByAuthor = username =>{
   return dispatch =>{
     axios.post('https://koa-neo4j-blog.herokuapp.com/api/user/getallposts',{username: username})
     .then(res=>{
-      addAuthorInfoToPost( dispatch, res.data);
+      addMyInfoToPost( dispatch, res.data);
     }).catch(err=>{
       console.log(err);
     })
@@ -83,7 +100,6 @@ export const fetchAllPostsByCategory=(activeCategory,username)=>{
   return dispatch => {
     axios.post("https://koa-neo4j-blog.herokuapp.com/api/category/getallposts",{name: activeCategory})
     .then((response)=>{
-
       let result=response.data;
       if(username){
         result=result.filter((post)=>post.author===username);

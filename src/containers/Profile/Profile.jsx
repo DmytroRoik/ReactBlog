@@ -8,6 +8,8 @@ import PostList from '../PostList/PostList';
 import ControlPanel from '../../components/Profile/ProfileControlPanel/ControlPanel';
 import ProfileEditor from '../../components/Profile/ProfileEditor/ProfileEditor';
 
+import {  fetchAllPostByAuthor } from '../../actions/actionPost';
+
 class Profile extends Component{
   constructor(props){
     super(props);
@@ -73,10 +75,19 @@ class Profile extends Component{
             </div>
         );
     }
+    componentDidMount(){
+      this.props.loadMyPosts(this.props.user.username);
+    }
 }
-const mapStateToProps=state=>{
+const mapDispatchToProps=dispatch=>{
   return{
-    user: state.user.user
+    loadMyPosts: (username)=> dispatch(fetchAllPostByAuthor(username)),
   }
 }
-export default connect(mapStateToProps)(Profile);
+
+const mapStateToProps=state=>{
+  return{
+    user: state.user.user,
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

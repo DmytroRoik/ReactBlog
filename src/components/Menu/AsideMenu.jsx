@@ -1,26 +1,17 @@
-import React,{Component} from 'react';
+import React from 'react';
 import classes from './AsideMenu.css';
 
 import MenuItem from './MenuItem/MenuItem';
 import {Link} from 'react-router-dom';
-import { connect } from 'react-redux';
-import { fetchAllPost, fetchAllPostByAuthor } from '../../actions/actionPost';
 
-class AsideMenu extends Component{
-
-  onPressLoadMyPostsHandler=()=>{
-    this.props.onfetchAllPostByAuthor( this.props.user.username)
-}
-
-  render(){
-    this.onPressLoadMyPostsHandler();
+const asideMenu =(props) => {
     return (
       <aside className={classes.AsideMenu}>
-        <Link to="/" onClick={this.onPressLoadMyPostsHandler}>
+        <Link to="/profile">
         <MenuItem title="Profile"/>
         </Link>
 
-        <Link to="/posts" onClick={this.props.onfetchAllPost} >
+        <Link to="/posts"  >
         <MenuItem title="All Posts"/>
         </Link>
 
@@ -29,18 +20,6 @@ class AsideMenu extends Component{
         </Link>
       </aside>
     );
-  }
 }
 
-const mapDispatchToProp=dispatch=>{
-  return{
-    onfetchAllPost: () => dispatch( fetchAllPost()),
-    onfetchAllPostByAuthor: (username) => dispatch( fetchAllPostByAuthor(username))
-  }
-}
-const mapStateToProp=state=>{
-  return{
-    user: state.user.user
-  }
-}
-export default connect(mapStateToProp,mapDispatchToProp)(AsideMenu);
+export default asideMenu;
