@@ -1,5 +1,6 @@
 const initialState = {
-    posts: []
+    posts: [],
+   // isSpinnerActive: false
 }
 
 export default function posts(state = initialState, action) {
@@ -14,7 +15,8 @@ export default function posts(state = initialState, action) {
                 }
                 return {
                     ...state,
-                    posts: [...state.posts, newPost]
+                    posts: [...state.posts, newPost],
+                    isSpinnerActive:false
                 }
             }
 
@@ -33,7 +35,8 @@ export default function posts(state = initialState, action) {
                 newPosts.splice(index, 1, {...selectedPost });
                 return {
                     ...state,
-                    posts: newPosts
+                    posts: newPosts,
+                    isSpinnerActive:false
                 }
             }
 
@@ -49,7 +52,8 @@ export default function posts(state = initialState, action) {
                 newPosts.splice(index, 1);
                 return {
                     ...state,
-                    posts: newPosts
+                    posts: newPosts,
+                    isSpinnerActive:false
                 }
             }
         case "ENABLE_EDITION_POST":
@@ -70,9 +74,16 @@ export default function posts(state = initialState, action) {
             {
                 return {
                     ...state,
-                    posts: [...action.payload]
+                    posts: [...action.payload],
+                    isSpinnerActive:false
                 }
             }
+        case "TOGGLE_SPINNER":{
+          return{
+            ...state,
+            isSpinnerActive:action.payload
+          }
+        }
 
         default:
             return state;

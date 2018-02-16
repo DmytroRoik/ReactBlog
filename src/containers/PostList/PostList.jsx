@@ -3,8 +3,8 @@ import classes from './PostList.css';
 
 import Post from '../../components/Posts/PostTemplate/PostTemplate';
 import { connect } from 'react-redux';
-import { fetchUpdatePost, fetchDeletePost, enableEditionPostAction } from '../../actions/actionPost';
-import { fetchAllPost } from '../../actions/actionPost';
+import { fetchUpdatePost, fetchDeletePost, enableEditionPostAction, fetchAllPost, toggleLoadingSpinner } from '../../actions/actionPost';
+
 
 class PostList extends Component{
   constructor(props){
@@ -16,10 +16,13 @@ class PostList extends Component{
     if(e.author!==this.props.user.firstName+" "+this.props.user.lastName)return;
     this.selectedPost=e;
     this.props.enableEditionPostFunction(this.selectedPost);
+    console.log(1);
   }
 
   onEditPostHandler(e){
+    console.log(2)
     e.preventDefault();
+    e.stopPropagation();
     let $form = e.target;
     const image = $form.querySelector(".ImagePreview img").src;
     this.selectedPost={
@@ -32,12 +35,15 @@ class PostList extends Component{
     if(this.selectedPost.content){
       this.setState({editablePost:false});
       const token = sessionStorage.getItem('accessToken');
+      this.props.toggleSpinner(true);
       this.props.onfetchUpdatePost(this.selectedPost, token);
+
    }
   }
 
   onDeletePostHandler=()=>{
     const token=sessionStorage.getItem('accessToken');
+    this.props.toggleSpinner(true);
     this.props.onfetchDeletePost(this.selectedPost, token);
   }
 
@@ -67,20 +73,25 @@ class PostList extends Component{
     );
   }
   componentDidMount(){
+    this.props.toggleSpinner(true);
     if(!this.props.location)return;
 
     if(this.props.location.pathname==="/posts"){
       this.props.onfetchAllPost();
+
     }
   }
 
 }
 const mapDispatchToProps=dispatch=>{
   return {
-    onfetchUpdatePost: (post, token) => dispatch( fetchUpdatePost(post, token)),
+    onfetchUpdatePost: (post, token) =>
+    dispatch( fetchUpdatePost(post, token)),
     onfetchDeletePost: (post, token) => dispatch( fetchDeletePost(post, token)),
     enableEditionPostFunction: (post)=> dispatch( enableEditionPostAction(post)),
-    onfetchAllPost: () => dispatch( fetchAllPost())
+    onfetchAllPost: () => dispatch( fetchAllPost()),
+
+    toggleSpinner:(isShow)=>dispatch(toggleLoadingSpinner(isShow))
   }
 }
 

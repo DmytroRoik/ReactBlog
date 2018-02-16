@@ -4,7 +4,8 @@ import classes from './PostConstructor.css';
 import PostHeader from './PostConstructorHeader/PostConstructorHeader';
 import PostBody from './PostConstructorBody/PostConstructorBody';
 import { connect } from 'react-redux';
-import { fetchCreatePost } from '../../../actions//actionPost';
+import { fetchCreatePost, toggleLoadingSpinner} from '../../../actions//actionPost';
+
 
 class PostConstructor extends Component{
 
@@ -22,6 +23,7 @@ class PostConstructor extends Component{
     let isContentPresent = this.isValuePresent( post.title ) && this.isValuePresent( post.content );
 
     if( isContentPresent && this.isValuePresent( post.category )){
+      this.props.toggleSpinner(true)
       this.props.onfetchCreatePost(post, token);
     }
     else{
@@ -48,7 +50,8 @@ class PostConstructor extends Component{
 }
 const mapDispatchToProps=dispatch=>{
   return {
-    onfetchCreatePost: (post, token)=>dispatch(fetchCreatePost(post, token))
+    onfetchCreatePost: (post, token)=>dispatch(fetchCreatePost(post, token)),
+    toggleSpinner:(isShow)=>dispatch(toggleLoadingSpinner(isShow))
   }
 }
 const mapStateToProp=state=>{

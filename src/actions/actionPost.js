@@ -31,12 +31,19 @@ export const loadPostAction = (posts) => {
     payload: posts
   }
 }
+export const toggleLoadingSpinner = (isShow)=>{
+  return {
+    type: "TOGGLE_SPINNER",
+    payload: isShow
+  }
+}
 
 /////////
 ///Async functions
 ///
 
 const addAuthorInfoToPost = (dispatch, posts) =>{
+
   const promises=[];
   const fullPosts=[...posts];
   posts.forEach (post=>{
@@ -62,7 +69,6 @@ const addMyInfoToPost = (dispatch, posts) =>{
   .then(res=>{
       user.author = res.data[0]["_fields"][0].properties.firstName + " " +res.data[0]["_fields"][0].properties.lastName;
       user.avatar = res.data[0]["_fields"][0].properties.img;
-
       fullPosts.forEach (post=>{
         post.author=user.author;
         post.avatar=user.avatar;

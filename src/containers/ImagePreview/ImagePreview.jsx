@@ -46,7 +46,7 @@ class ImagePreview extends Component{
     }
 
     return (
-      <div className={classes.ImagePreview}>
+      <div className="ImagePreview">
           <DropBox drop= {this.onDropPictureHandler}
              ondrag={this.onDragHandler}
              onDragLeave={this.onDragLeaveHandler}

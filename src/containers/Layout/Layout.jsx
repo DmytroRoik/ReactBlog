@@ -4,10 +4,16 @@ import classes from './Layout.css';
 import Menu from '../../components/Menu/AsideMenu';
 import SideDrawer from '../../components/NavigationItems/SideDrawer/SideDrawer';
 
+import Spinner from '../../components/UI/Spinner/Spinner';
+
 class Layout extends Component{
-  state={
-    showSideDrawer:false
+  constructor(props){
+    super(props);
+    this.state={
+      showSideDrawer:false
+    }
   }
+
   sideDrawerClosedHandler=()=>{
     this.setState({ showSideDrawer:false})
   }
@@ -21,11 +27,13 @@ class Layout extends Component{
       <div>
         <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler}/>
         <SideDrawer open={this.state.showSideDrawer}
-            closedClick={this.sideDrawerClosedHandler}/> 
+            closedClick={this.sideDrawerClosedHandler}/>
         <div className={classes.AsideMenu}>
         <Menu />
         </div>
+        <Spinner show={this.props.isSpinnerShow}/>
           <div className={classes.Content}>
+
             {this.props.children}
           </div>
       </div>
