@@ -13,14 +13,13 @@ class PostList extends Component{
   }
 
   onDoubleClickEditActivate=(e)=>{
+    console.log(e)
     if(e.author!==this.props.user.firstName+" "+this.props.user.lastName)return;
     this.selectedPost=e;
     this.props.enableEditionPostFunction(this.selectedPost);
-    console.log(1);
   }
 
   onEditPostHandler(e){
-    console.log(2)
     e.preventDefault();
     e.stopPropagation();
     let $form = e.target;

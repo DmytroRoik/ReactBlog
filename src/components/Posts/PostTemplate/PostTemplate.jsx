@@ -18,7 +18,8 @@ const postTemplate=(props)=>(
        <ConstructorBody
          title={props.title}
          content={props.content}
-         img={props.img}onSave={props.onSave}
+         img={props.img}
+         onSave={props.onSave}
          onPressDelete={props.onDeletePost}/>
      :<Body
        title={props.title}

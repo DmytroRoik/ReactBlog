@@ -13,7 +13,7 @@ const postConstructorBody=(props)=>(
         </textarea>
         <label htmlFor="content">Post body...</label>
       </div>
-      <ImagePreview/>
+      <ImagePreview img={props.img}/>
       <button type="submit">Update</button>
       <button onClick={props.onPressDelete}>Delete</button>
     </form>

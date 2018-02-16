@@ -40,8 +40,8 @@ class ImagePreview extends Component{
 
   render(){
 
-    let $preview=(<Preview img={this.state.encodedPicture}/>)
-    if(this.state.encodedPicture.length===0){
+    let $preview=(<Preview img={this.props.img||this.state.encodedPicture}/>)
+    if(!this.props.img&&this.state.encodedPicture.length===0){
       $preview=null;
     }
 
