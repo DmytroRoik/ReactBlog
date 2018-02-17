@@ -48,7 +48,8 @@ class StartPage extends Component{
     if(this.props.isUserPresent){
       attachedClasses.push(classes.Close);
       setTimeout(()=>{
-      this.props.history.push('/profile');
+        this.props.history.push('/profile');
+
       },300);
     }
     return (

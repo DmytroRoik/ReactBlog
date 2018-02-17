@@ -7,22 +7,33 @@ import Profile from '../containers/Profile/Profile';
 import StartPage from '../components/StartPage/StartPage';
 
 
-import {BrowserRouter,Switch,Route} from 'react-router-dom';
+import {BrowserRouter,Switch,Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 class App extends Component {
 
   render() {
-    return (
-
-      <BrowserRouter>
-        <Layout isSpinnerShow={this.props.isSpinnerActive}>
+    let routes=(
+      <Switch>
+        <Route path="/" exact component={StartPage}/>
+        <Redirect to="/" />
+      </Switch>
+    );
+    if(this.props.isUserAuthorized){
+      routes=(
+        <Switch>
             <Route path="/" exact component={StartPage}/>
-          <Switch>
             <Route path="/profile" exact component={Profile}/>
             <Route path="/myposts" exact component={PostList}/>
             <Route path="/new-post" exact component={PostConstructor}  />
             <Route path="/posts" exact component={PostList}  />
           </Switch>
+      );
+    }
+    return (
+
+      <BrowserRouter>
+        <Layout isSpinnerShow={this.props.isSpinnerActive}>
+            {routes}
         </Layout>
       </BrowserRouter>
     );
@@ -30,7 +41,8 @@ class App extends Component {
 }
 const mapStateToProps = state =>{
   return{
-    isSpinnerActive: state.posts.isSpinnerActive
+    isSpinnerActive: state.posts.isSpinnerActive,
+    isUserAuthorized: state.user.isUserPresent
   }
 }
 
