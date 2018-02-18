@@ -12,7 +12,7 @@
     color: rgb(0, 255, 242);
 }
 
-@media (max-width:500px) {
+@media (max-width:700px) {
     .Categories,
     .Categories:hover {
         margin-top: 250px;

@@ -2,9 +2,9 @@
     width: 80%;
 }
 
-@media(max-width:500px) {
+@media(max-width:1000px) {
     .PostList {
         width: 100%;
-        margin: -15px 0;
+        margin: -10px 0;
     }
 }

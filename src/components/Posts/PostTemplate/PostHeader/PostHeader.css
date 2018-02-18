@@ -32,15 +32,24 @@
     text-align: center;
 }
 
-@media(max-width:750px) {
+@media(max-width:700px) {
     .PostHeader {
         flex-direction: column;
         margin-bottom: 30px;
     }
     .Category {
-        margin-top: 10px;
-        position: relative;
-        left: 140px;
-        top: -75px;
+      margin-top: 10px;
+      position: relative;
+      left:  38%;
+      top: -130px;
+    }
+    .userName{
+      font-size: 23px;
+      display: block;
+      text-transform: capitalize;
+      position: relative;
+      top: -70px;
+      left: 64px;
+      width: 100px;
     }
 }
