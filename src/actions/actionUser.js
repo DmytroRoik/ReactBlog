@@ -13,13 +13,13 @@ export const logoutUserAction = () => {
     }
 }
 
-
 export const fetchLoginUser = (userData) =>{
   return dispatch => {
     axios.post('https://koa-neo4j-blog.herokuapp.com/api/user/signin',userData)
     .then(response=>{
         let token=response.data.data;
         sessionStorage.setItem('accessToken',token);
+        sessionStorage.setItem('user',JSON.stringify(response.data.user));
         dispatch( loginUserAction(response.data.user) )
     })
     .catch(error=>alert("Password or login is incorrect!"));
@@ -38,7 +38,7 @@ export const fetchRegisterUser = (userValue) =>{
       .then(res=>{
         let token=response.data.data;
           sessionStorage.setItem('accessToken',token);
-
+          sessionStorage.setItem('user',JSON.stringify(response.data.user));
         dispatch(loginUserAction(userValue));
       })
     },1000);
