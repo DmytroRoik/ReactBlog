@@ -31,6 +31,11 @@
     box-sizing: border-box!important;
     text-align: center;
 }
+input.Category{
+  width: 183px!important;
+  position: relative;
+  left: 0px;
+}
 
 @media(max-width:700px) {
     .PostHeader {
@@ -51,5 +56,10 @@
       top: -70px;
       left: 64px;
       width: 100px;
+    }
+    input.Category{
+      width: 139px!important;
+      position: relative;
+      left: 77px;
     }
 }

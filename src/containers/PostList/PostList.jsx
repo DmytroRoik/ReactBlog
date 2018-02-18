@@ -13,7 +13,6 @@ class PostList extends Component{
   }
 
   onDoubleClickEditActivate=(e)=>{
-    console.log(e)
     if(e.author!==this.props.user.firstName+" "+this.props.user.lastName)return;
     this.selectedPost=e;
     this.props.enableEditionPostFunction(this.selectedPost);
@@ -23,11 +22,13 @@ class PostList extends Component{
     e.preventDefault();
     e.stopPropagation();
     let $form = e.target;
-    const image = $form.querySelector(".ImagePreview img").src;
+    const $image = $form.querySelector(".ImagePreview img");
     this.selectedPost={
+      author:this.props.user.firstName+" "+this.props.user.lastName,
+      avatar: this.props.user.img,
       title: $form.title.value,
       content:$form.content.value,
-      img:image,
+      img: $image?$image.src:"",
       category:document.getElementById('category').value
     }
 

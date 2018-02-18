@@ -22,7 +22,7 @@ export const fetchLoginUser = (userData) =>{
         sessionStorage.setItem('accessToken',token);
         dispatch( loginUserAction(response.data.user) )
     })
-    .catch(error=>console.log(error));
+    .catch(error=>alert("Password or login is incorrect!"));
 
   }
 }

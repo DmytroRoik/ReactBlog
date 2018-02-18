@@ -14,8 +14,8 @@ const postConstructorBody=(props)=>(
         <label htmlFor="content">Post body...</label>
       </div>
       <ImagePreview img={props.img}/>
-      <button type="submit">Update</button>
-      <button onClick={props.onPressDelete}>Delete</button>
+      <button type="submit" className={classes.update}>Update</button>
+      <button onClick={props.onPressDelete} className={classes.delete}>Delete</button>
     </form>
   </div>
 );

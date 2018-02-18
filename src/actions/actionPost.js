@@ -55,9 +55,11 @@ const addAuthorInfoToPost = (dispatch, posts) =>{
     authors.forEach( (el,i) => {
       fullPosts[i].author = el.data[0]["_fields"][0].properties.firstName + " " +el.data[0]["_fields"][0].properties.lastName;
       fullPosts[i].avatar = el.data[0]["_fields"][0].properties.img;
-    });
-
+    })
     dispatch(loadPostAction(fullPosts));
+  })
+  .catch(e=>{
+    dispatch(toggleLoadingSpinner(false));
   });
 }
 
@@ -85,7 +87,7 @@ export const fetchAllPost = (username) =>{
       addAuthorInfoToPost(dispatch, response.data);
     })
     .catch(err=>{
-      console.log(err);
+      dispatch(toggleLoadingSpinner(false));
     });
   }
 }
@@ -96,7 +98,7 @@ export const fetchAllPostByAuthor = username =>{
     .then(res=>{
       addMyInfoToPost( dispatch, res.data);
     }).catch(err=>{
-      console.log(err);
+      dispatch(toggleLoadingSpinner(false));
     })
 
   }
@@ -111,6 +113,9 @@ export const fetchAllPostsByCategory=(activeCategory,username)=>{
         result=result.filter((post)=>post.author===username);
       }
       addAuthorInfoToPost(dispatch,result);
+    })
+    .catch(e=>{
+      dispatch(toggleLoadingSpinner(false));
     })
   }
 }
@@ -130,7 +135,8 @@ export const fetchCreatePost = ( post, token ) =>{
     dispatch( createPostAction(post) );
   })
   .catch(err=>{
-    console.error(err);
+    alert("Post wasn`t been created");
+    dispatch(toggleLoadingSpinner(false));
   })
   }
 }
@@ -147,10 +153,11 @@ export const fetchUpdatePost = ( post, token) =>{
     }
   })
   .then( response =>{
-    dispatch ( editPostAction(response.data) );
+    dispatch ( editPostAction(post) );
   })
   .catch( error=>{
-    console.log(error);
+    alert("Post wasn`t been updated");
+    dispatch(toggleLoadingSpinner(false));
   });
 }
 }
@@ -169,7 +176,8 @@ export const fetchDeletePost = ( post, token) =>{
     dispatch( deletePostAction(post) );
   })
   .catch(error=>{
-    console.log(error)
+    alert("Post wasn`t been deleted");
+    dispatch(toggleLoadingSpinner(false));
   })
 }
 }
