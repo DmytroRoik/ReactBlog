@@ -16,7 +16,7 @@ class Categories extends Component{
   }
 
   mouseOverHandler(){
-   // this.props.onFetchCategories();
+    this.props.onFetchCategories();
     this.setState({isCategoriesOpen:true});
   }
   mouseOutHandler(){

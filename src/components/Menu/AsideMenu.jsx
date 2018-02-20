@@ -8,15 +8,15 @@ const asideMenu =(props) => {
     return (
       <aside className={classes.AsideMenu}>
         <Link to="/profile">
-        <MenuItem title="Profile"/>
+          <MenuItem title="Profile"/>
         </Link>
 
         <Link to="/posts"  >
-        <MenuItem title="All Posts"/>
+          <MenuItem title="All Posts"/>
         </Link>
 
         <Link to="/new-post">
-        <MenuItem title="Create Post"/>
+          <MenuItem title="Create Post"/>
         </Link>
       </aside>
     );

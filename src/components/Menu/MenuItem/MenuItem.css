@@ -7,3 +7,9 @@
     background-color: rgba(0, 128, 0, 0.219);
     cursor: pointer;
 }
+@media(max-width:900px){
+  .MenuItem{
+    padding: 10px 20px;
+    width: 211%;
+  }
+}

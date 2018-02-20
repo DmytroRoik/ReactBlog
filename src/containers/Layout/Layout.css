@@ -1,11 +1,8 @@
 .Content {
     padding: 60px 0 0 calc(15% + 150px);
 }
-@media(max-width:1200px){
 
-}
-
-@media(max-width:700px) {
+@media(max-width:900px) {
     .Content {
         padding: 60px 0 0 0;
         width: 100%;

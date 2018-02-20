@@ -3,13 +3,14 @@ import classes from './PostList.css';
 
 import Post from '../../components/Posts/PostTemplate/PostTemplate';
 import { connect } from 'react-redux';
-import { fetchUpdatePost, fetchDeletePost, enableEditionPostAction, fetchAllPost, toggleLoadingSpinner } from '../../actions/actionPost';
+import { fetchUpdatePost, fetchDeletePost, enableEditionPostAction, fetchAllPost, toggleLoadingSpinner, loadPostAction } from '../../actions/actionPost';
 
 
 class PostList extends Component{
   constructor(props){
     super(props);
     this.selectedPost={}
+    props.onClearPosts();
   }
 
   onDoubleClickEditActivate=(e)=>{
@@ -90,6 +91,7 @@ const mapDispatchToProps=dispatch=>{
     onfetchDeletePost: (post, token) => dispatch( fetchDeletePost(post, token)),
     enableEditionPostFunction: (post)=> dispatch( enableEditionPostAction(post)),
     onfetchAllPost: () => dispatch( fetchAllPost()),
+    onClearPosts: ()=>dispatch(loadPostAction([])),
 
     toggleSpinner:(isShow)=>dispatch(toggleLoadingSpinner(isShow))
   }

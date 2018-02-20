@@ -8,7 +8,7 @@ const dropBox=(props)=>(
     onDragOver={props.ondrag}
     onDragLeave={props.onDragLeave}
     >
-
+    <h6>Choose image or drop the image</h6>
     {props.children}
   </div>
 );

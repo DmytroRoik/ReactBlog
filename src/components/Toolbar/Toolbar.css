@@ -8,10 +8,14 @@
     background-color: rgba(6, 43, 31, 0.911);
     z-index: 100;
 }
+@media(max-width:700px){
+  .Categories{
+    display: none;
+  }
+}
 
-@media(max-width:700px) {
-    .Logo,
-    .Categories {
+@media(max-width:900px) {
+    .Logo{
         display: none;
     }
 }

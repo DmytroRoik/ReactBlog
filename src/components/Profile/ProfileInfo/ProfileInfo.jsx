@@ -4,9 +4,12 @@ import classes from './ProfileInfo.css';
 const profileInfo=(props)=>{
     return(
         <div className={classes.ProfileInfo}>
-            <span>{props.user.firstName||"username"}</span>
+           <h2>
+            <span>{props.user.firstName||""}</span>
             <span>{props.user.lastName}</span>
+          </h2>
             <p>gender: { props.user.gender||""}</p>
+
         </div>
     );
 }

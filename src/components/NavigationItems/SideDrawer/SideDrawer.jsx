@@ -4,7 +4,6 @@ import Aux from '../../../containers/hoc/Aux';
 import BackDrop from '../../UI/BackDrop/BackDrop';
 import Menu from '../../Menu/AsideMenu';
 import Logo from '../../Logo/Logo';
-import Categories from '../Categories/Categories';
 
 const sideDrawer=(props)=>{
     let attachedClasses=[classes.SideDrawer];
@@ -23,7 +22,6 @@ const sideDrawer=(props)=>{
         <Logo/>
        </div>
         <Menu/>
-        <Categories/>
       </div>
     </Aux>
   );

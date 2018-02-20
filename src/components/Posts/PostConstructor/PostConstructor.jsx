@@ -14,7 +14,7 @@ class PostConstructor extends Component{
     this.data={};
   }
 
-  onCreatePostHandler=()=>{
+  onCreatePostHandler=(e)=>{
     const token = sessionStorage.getItem('accessToken');
     const post=this.data;
 
@@ -28,6 +28,7 @@ class PostConstructor extends Component{
     }
     else{
       alert("Must be:\n - Title\n - Body");
+      e.preventDefault();
     }
   }
 

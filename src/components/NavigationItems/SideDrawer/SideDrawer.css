@@ -15,7 +15,7 @@
     touch-action: pan-y;
 }
 
-@media ( min-width:700px) {
+@media ( min-width:900px) {
     .SideDrawer {
         display: none;
     }

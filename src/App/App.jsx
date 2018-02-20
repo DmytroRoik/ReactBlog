@@ -51,9 +51,13 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch =>{
   return{
     tryLoginUserFromStorage: ()=>{
+
+      if(sessionStorage.getItem('user')!=="undefined"){
+        console.log(sessionStorage.getItem('user'))
         const user=JSON.parse(sessionStorage.getItem('user'));
         if(user)dispatch(loginUserAction(user));
       }
+    }
   }
 }
 

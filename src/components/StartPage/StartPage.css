@@ -14,7 +14,8 @@
     display: flex;
     justify-content: space-around;
     padding-top: 50px;
-    height:965px;
+    min-height: 100vh;
+    height:auto;
 }
 
 .Open {

@@ -66,13 +66,13 @@ class Profile extends Component{
               <ControlPanel
               buttonClicked={{ destroy: this.onDeleteClickHandler,
                             edit: this.onEditClickHandler}}/>
+              {profileEditor}
              <div className={classes.UserPosts}>
-
-             {profileEditor}
+             <hr style={{width:'100%'}}/>
                 <h2>My Posts</h2>
                 <PostList />
              </div>
-            </div>
+          </div>
         );
     }
     componentDidMount(){

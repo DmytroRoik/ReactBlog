@@ -1,7 +1,11 @@
 .DropBox{
   width: 100%;
-  background-color:rgba(100,100,100,.3);
-
+  background-color:rgba(100,100,100,.051);
   min-height: 100px;
   height: 100%;
+}
+h6{
+  padding-left: 30px;
+  padding-top: 10px;
+  margin-bottom: 0;
 }

@@ -156,7 +156,6 @@ export const fetchUpdatePost = ( post, token) =>{
     dispatch ( editPostAction(post) );
   })
   .catch( error=>{
-    alert("Post wasn`t been updated");
     dispatch(toggleLoadingSpinner(false));
   });
 }

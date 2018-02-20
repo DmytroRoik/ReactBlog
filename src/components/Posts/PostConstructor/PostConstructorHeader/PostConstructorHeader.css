@@ -11,25 +11,27 @@
     position: relative;
     top: 6px;
 }
+.PostConstructorHeader input::placeholder{
+  font-size: 25px;
+  color:rgba(100,200,100,.8);
+}
 
 .PostConstructorHeader input:focus {
     border-bottom: 1px solid grey;
 }
 
 .PostConstructorHeader a {
-    width: 100px;
-    height: 50px;
-    align-self: center;
-    padding: 10px;
-    text-align: center;
-    background-color: green;
-    color: white;
+  width: 100px;
+  align-self: center;
+  padding: 10px;
+  text-align: center;
+  background-color: #537953;
+  color: white;
+  border-radius: 15px;
 }
 
-.PostConstructorHeader a:disabled {
-    border: none;
-    color: grey;
-    cursor: not-allowed;
+.PostConstructorHeader a:hover {
+  background-color: #90ab90;
+  color: white;
+  border-radius: 15px;
 }
-
-.PostConstructorHeader a {}
