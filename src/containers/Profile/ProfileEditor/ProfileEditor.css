@@ -1,0 +1,15 @@
+.ProfileEditor{
+  width:350px;
+  text-align: center;
+}
+.SubmitBtn{
+  padding: 3px 30px;
+  margin: 5px auto;
+  background-color: rgba(11, 90, 40, 0.75);
+  color: white;
+  font-size: 20px;
+  border-radius: 5px;
+}
+.errorInput{
+  border: 2px dashed red!important;
+}

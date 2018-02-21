@@ -20,12 +20,12 @@ class ImagePreview extends Component{
 
     var dt = e.dataTransfer;
     var file = dt.files[0];
-    convertImgToBase64(this, file);
+    convertImgToBase64State(this, file);
     this.setState({isCanDrop: false});
   }
   onInputFieldClickHandler=(e)=>{
     let file=e.target.files[0];
-    convertImgToBase64(this, file);
+    convertImgToBase64State(this, file);
   }
 
   onDragHandler=(e)=> {
@@ -58,11 +58,12 @@ class ImagePreview extends Component{
     );
   }
 }
-const convertImgToBase64 = ( obj, file ) => {
+const convertImgToBase64State = ( obj, file ) => {
   const reader  = new FileReader();
 
     reader.addEventListener("load", () => {
       obj.setState( { encodedPicture: reader.result } );
+      if(obj.props.getImage)this.props.getImage=this.props.img||this.state.encodedPicture||"error";
     }, false);
 
   if (file) {

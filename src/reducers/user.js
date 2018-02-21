@@ -7,7 +7,7 @@ const initialState = {
     img: "",
     gender: ""
   },
-  isUserPresent: false
+  isUserPresent: false,
 }
 
 export default function user(state = initialState, action) {
@@ -33,7 +33,19 @@ export default function user(state = initialState, action) {
         isUserPresent: false
       }
     }
-
+    case "EDIT_USER":
+    {
+      let user={...state.user}
+      for(let key in action.payload){
+        if(action.payload[key]){
+          user[key]=action.payload[key]
+        }
+      }
+      return{
+        ...state,
+        user:user
+      }
+    }
     default:
     return state;
   }

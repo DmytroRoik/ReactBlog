@@ -1,5 +1,12 @@
 import axios from 'axios';
 
+export const editUserAction = (user)=>{
+  return {
+    type: "EDIT_USER",
+    payload: user
+  }
+}
+
 export const loginUserAction = (user) => {
     return {
         type: "LOGIN_USER",
@@ -45,6 +52,27 @@ export const fetchRegisterUser = (userValue) =>{
     })
     .catch(err=>{
       alert("User is already exists");
+    });
+  }
+}
+
+export const fetchEditUser = (userValue) =>{
+  const token=sessionStorage.getItem('accessToken');
+  return dispatch =>{
+
+    axios.post('https://koa-neo4j-blog.herokuapp.com/api/user/update',
+    userValue,
+    {
+      headers: {
+        'Authorization': token,
+      }
+    })
+    .then(response=>{
+      console.log(response);
+      //dispatch(editUserAction())
+    })
+    .catch(err=>{
+
     });
   }
 }

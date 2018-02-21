@@ -9,12 +9,9 @@
     flex-direction: column;
     padding: 0 5%;
 }
-.errorInput{
-  border: 2px dashed red!important;
-}
+
 
 #editUserForm{
-  text-align: center;
   position: relative;
   left: 17%;
 }
