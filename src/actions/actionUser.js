@@ -43,9 +43,10 @@ export const fetchRegisterUser = (userValue) =>{
       setTimeout(()=>{
       axios.post('https://koa-neo4j-blog.herokuapp.com/api/user/signin',userValue)
       .then(res=>{
-        let token=response.data.data;
+        let token=res.data.data;
+        console.log(res)
           sessionStorage.setItem('accessToken',token);
-          sessionStorage.setItem('user',JSON.stringify(response.data.user));
+          sessionStorage.setItem('user',JSON.stringify(res.data.user));
         dispatch(loginUserAction(userValue));
       })
     },1000);
