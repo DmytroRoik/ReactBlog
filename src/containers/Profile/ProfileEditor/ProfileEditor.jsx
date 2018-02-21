@@ -49,8 +49,6 @@ class ProfileEditor extends Component{
       gender: this.props.user.gender
     }
     this.props.onEditUser(user);
-    console.log(user);
-
   }
 
   onInputEditionValue = e  => {
